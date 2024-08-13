@@ -1,5 +1,7 @@
 package shticell.expression.api;
 
-public interface Expression<T> {
-    T eval();
+import shticell.sheet.api.EffectiveValue;
+
+public interface Expression {
+    EffectiveValue eval();
 }

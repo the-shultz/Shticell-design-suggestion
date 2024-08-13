@@ -30,6 +30,8 @@ public class SheetImpl implements Sheet {
     public void setCell(int row, int column, String value) {
         Coordinate coordinate = CoordinateFactory.createCoordinate(row, column);
         Cell cell = activeCells.get(coordinate);
+        // if null need to create the cell...
+
         cell.setCellOriginalValue(value);
     }
 }

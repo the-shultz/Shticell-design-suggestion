@@ -2,6 +2,7 @@ package shticell.sheet.cell.impl;
 
 import shticell.expression.api.Expression;
 import shticell.expression.api.impl.UpperCaseExpression;
+import shticell.sheet.api.EffectiveValue;
 import shticell.sheet.cell.api.Cell;
 import shticell.sheet.coordinate.Coordinate;
 import shticell.sheet.coordinate.CoordinateImpl;
@@ -12,12 +13,12 @@ public class CellImpl implements Cell {
 
     private final Coordinate coordinate;
     private String originalValue;
-    private Object effectiveValue;
+    private EffectiveValue effectiveValue;
     private int version;
     private final List<Cell> dependsOn;
     private final List<Cell> influencingOn;
 
-    public CellImpl(int row, int column, String originalValue, Object effectiveValue, int version, List<Cell> dependsOn, List<Cell> influencingOn) {
+    public CellImpl(int row, int column, String originalValue, EffectiveValue effectiveValue, int version, List<Cell> dependsOn, List<Cell> influencingOn) {
         this.coordinate = new CoordinateImpl(row, column);
         this.originalValue = originalValue;
         this.effectiveValue = effectiveValue;
@@ -41,7 +42,7 @@ public class CellImpl implements Cell {
     }
 
     @Override
-    public Object getEffectiveValue() {
+    public EffectiveValue getEffectiveValue() {
         return effectiveValue;
     }
 

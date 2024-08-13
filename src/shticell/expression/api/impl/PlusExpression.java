@@ -1,19 +1,27 @@
 package shticell.expression.api.impl;
 
 import shticell.expression.api.Expression;
+import shticell.sheet.api.CellType;
+import shticell.sheet.api.EffectiveValue;
+import shticell.sheet.impl.EffectiveValueImpl;
 
-public class PlusExpression implements Expression<Double> {
+public class PlusExpression implements Expression {
 
-    private Expression<Double> left;
-    private Expression<Double> right;
+    private Expression left;
+    private Expression right;
 
-    public PlusExpression(Expression<Double> left, Expression<Double> right) {
+    public PlusExpression(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
 
     @Override
-    public Double eval() {
-        return left.eval() + right.eval();
+    public EffectiveValue eval() {
+        EffectiveValue leftValue = left.eval();
+        EffectiveValue rightValue = right.eval();
+        // do some checking... error handling...
+        double result = (Double) leftValue.getValue() + (Double) rightValue.getValue();
+
+        return new EffectiveValueImpl(CellType.NUMERIC, result);
     }
 }

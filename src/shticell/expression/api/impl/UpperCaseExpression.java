@@ -1,8 +1,11 @@
 package shticell.expression.api.impl;
 
 import shticell.expression.api.Expression;
+import shticell.sheet.api.CellType;
+import shticell.sheet.api.EffectiveValue;
+import shticell.sheet.impl.EffectiveValueImpl;
 
-public class UpperCaseExpression implements Expression<String> {
+public class UpperCaseExpression implements Expression {
 
     private final String value;
 
@@ -11,7 +14,7 @@ public class UpperCaseExpression implements Expression<String> {
     }
 
     @Override
-    public String eval() {
-        return value.toUpperCase();
+    public EffectiveValue eval() {
+        return new EffectiveValueImpl(CellType.STRING, value.toUpperCase());
     }
 }
