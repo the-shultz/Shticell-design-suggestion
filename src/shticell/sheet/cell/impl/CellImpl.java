@@ -1,5 +1,7 @@
 package shticell.sheet.cell.impl;
 
+import shticell.expression.api.Expression;
+import shticell.expression.api.impl.UpperCaseExpression;
 import shticell.sheet.cell.api.Cell;
 import shticell.sheet.coordinate.Coordinate;
 import shticell.sheet.coordinate.CoordinateImpl;
@@ -41,6 +43,18 @@ public class CellImpl implements Cell {
     @Override
     public Object getEffectiveValue() {
         return effectiveValue;
+    }
+
+    @Override
+    public void calculateEffectiveValue() {
+        // build the expression object out of the original value...
+        // it can be {PLUS, 4, 5} OR {CONCAT, "hello", "world"}
+
+        // first question: what is the generic type of Expression ?
+        Expression expression = new UpperCaseExpression("bla");
+
+        // second question: what is the return type of eval() ?
+        effectiveValue = expression.eval();
     }
 
     @Override
