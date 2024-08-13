@@ -1,8 +1,8 @@
 package shticell.sheet.impl;
 
-import shticell.cell.api.Cell;
-import shticell.cell.api.Coordinate;
-import shticell.cell.impl.CoordinateImpl;
+import shticell.sheet.cell.api.Cell;
+import shticell.sheet.coordinate.Coordinate;
+import shticell.sheet.coordinate.CoordinateImpl;
 import shticell.sheet.api.Sheet;
 
 import java.util.HashMap;

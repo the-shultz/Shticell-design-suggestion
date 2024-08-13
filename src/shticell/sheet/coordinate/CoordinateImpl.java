@@ -1,6 +1,4 @@
-package shticell.cell.impl;
-
-import shticell.cell.api.Coordinate;
+package shticell.sheet.coordinate;
 
 public class CoordinateImpl implements Coordinate {
     private final int row;
