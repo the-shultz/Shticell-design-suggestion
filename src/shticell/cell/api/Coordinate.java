@@ -1,4 +1,4 @@
-package shticell.cell;
+package shticell.cell.api;
 
 public interface Coordinate {
     int getRow();
