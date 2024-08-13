@@ -22,4 +22,13 @@ public class EffectiveValueImpl implements EffectiveValue {
     public Object getValue() {
         return value;
     }
+
+    @Override
+    public <T> T extractValueWithExpectation(Class<T> type) {
+        if (cellType.isAssignableFrom(type)) {
+            return type.cast(value);
+        }
+        // error handling... exception ? return null ?
+        return null;
+    }
 }

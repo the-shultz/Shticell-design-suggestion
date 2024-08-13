@@ -12,5 +12,7 @@ public class Main {
         Cell cell = sheet.getCell(0, 0);
         Object value = cell.getEffectiveValue().getValue();
         System.out.println(value);
+
+        String s = cell.getEffectiveValue().extractValueWithExpectation(String.class);
     }
 }
