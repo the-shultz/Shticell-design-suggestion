@@ -1,11 +1,9 @@
-package shticell.sheet.cell.impl;
+package shticell.cell.impl;
 
-import shticell.expression.api.Expression;
-import shticell.expression.api.impl.UpperCaseExpression;
-import shticell.sheet.api.EffectiveValue;
-import shticell.sheet.cell.api.Cell;
-import shticell.sheet.coordinate.Coordinate;
-import shticell.sheet.coordinate.CoordinateImpl;
+import shticell.cell.api.EffectiveValue;
+import shticell.cell.api.Cell;
+import shticell.coordinate.Coordinate;
+import shticell.coordinate.CoordinateImpl;
 
 import java.util.List;
 

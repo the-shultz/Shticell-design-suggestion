@@ -1,4 +1,6 @@
-package shticell.sheet.api;
+package shticell.cell.api;
+
+import shticell.cell.api.CellType;
 
 public interface EffectiveValue {
     CellType getCellType();

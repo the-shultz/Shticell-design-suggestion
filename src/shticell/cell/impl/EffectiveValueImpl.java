@@ -1,7 +1,7 @@
-package shticell.sheet.impl;
+package shticell.cell.impl;
 
-import shticell.sheet.api.CellType;
-import shticell.sheet.api.EffectiveValue;
+import shticell.cell.api.CellType;
+import shticell.cell.api.EffectiveValue;
 
 public class EffectiveValueImpl implements EffectiveValue {
 

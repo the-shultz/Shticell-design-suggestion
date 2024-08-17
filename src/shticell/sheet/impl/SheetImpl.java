@@ -1,9 +1,9 @@
 package shticell.sheet.impl;
 
 import shticell.sheet.api.Sheet;
-import shticell.sheet.cell.api.Cell;
-import shticell.sheet.coordinate.Coordinate;
-import shticell.sheet.coordinate.CoordinateFactory;
+import shticell.cell.api.Cell;
+import shticell.coordinate.Coordinate;
+import shticell.coordinate.CoordinateFactory;
 
 import java.util.HashMap;
 import java.util.Map;

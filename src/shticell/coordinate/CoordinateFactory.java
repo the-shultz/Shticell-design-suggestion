@@ -1,4 +1,4 @@
-package shticell.sheet.coordinate;
+package shticell.coordinate;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package shticell;
 
 import shticell.sheet.api.Sheet;
-import shticell.sheet.cell.api.Cell;
+import shticell.cell.api.Cell;
 import shticell.sheet.impl.SheetImpl;
 
 public class Main {

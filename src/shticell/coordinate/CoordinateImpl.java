@@ -1,4 +1,4 @@
-package shticell.sheet.coordinate;
+package shticell.coordinate;
 
 public class CoordinateImpl implements Coordinate {
     private final int row;

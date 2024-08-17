@@ -1,7 +1,6 @@
-package shticell.sheet.cell.api;
+package shticell.cell.api;
 
-import shticell.sheet.api.EffectiveValue;
-import shticell.sheet.coordinate.Coordinate;
+import shticell.coordinate.Coordinate;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package shticell.sheet.api;
+package shticell.cell.api;
 
 public enum CellType {
     NUMERIC(Double.class) ,
