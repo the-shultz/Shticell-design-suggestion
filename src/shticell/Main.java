@@ -10,9 +10,16 @@ public class Main {
         sheet.setCell(0, 0, "Hello, World!");
 
         Cell cell = sheet.getCell(0, 0);
+        cell.calculateEffectiveValue();
         Object value = cell.getEffectiveValue().getValue();
         System.out.println(value);
 
-        String s = cell.getEffectiveValue().extractValueWithExpectation(String.class);
+        sheet.setCell(1,1, "{plus, 1, 2}");
+
+        cell = sheet.getCell(1, 1);
+
+        cell.calculateEffectiveValue();
+        Double result = cell.getEffectiveValue().extractValueWithExpectation(Double.class);
+        System.out.println("result: " + result);
     }
 }

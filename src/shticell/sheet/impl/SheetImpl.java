@@ -1,5 +1,6 @@
 package shticell.sheet.impl;
 
+import shticell.cell.impl.CellImpl;
 import shticell.sheet.api.Sheet;
 import shticell.cell.api.Cell;
 import shticell.coordinate.Coordinate;
@@ -7,6 +8,7 @@ import shticell.coordinate.CoordinateFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class SheetImpl implements Sheet {
 
@@ -29,9 +31,13 @@ public class SheetImpl implements Sheet {
     @Override
     public void setCell(int row, int column, String value) {
         Coordinate coordinate = CoordinateFactory.createCoordinate(row, column);
-        Cell cell = activeCells.get(coordinate);
-        // if null need to create the cell...
-
-        cell.setCellOriginalValue(value);
+        Optional
+            .ofNullable(activeCells.get(coordinate))
+            .or(() -> {
+                    Cell newCell = new CellImpl(row, column, value, 1);
+                    activeCells.put(coordinate, newCell);
+                    return Optional.of(newCell);
+                })
+            .ifPresent(cell -> cell.setCellOriginalValue(value));
     }
 }
