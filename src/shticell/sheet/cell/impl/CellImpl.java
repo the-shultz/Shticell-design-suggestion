@@ -52,10 +52,10 @@ public class CellImpl implements Cell {
         // it can be {PLUS, 4, 5} OR {CONCAT, "hello", "world"}
 
         // first question: what is the generic type of Expression ?
-        Expression expression = new UpperCaseExpression("bla");
+        //Expression expression = new UpperCaseExpression("bla");
 
         // second question: what is the return type of eval() ?
-        effectiveValue = expression.eval();
+        //effectiveValue = expression.eval();
     }
 
     @Override
