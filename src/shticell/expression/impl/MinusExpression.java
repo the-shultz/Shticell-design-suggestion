@@ -1,9 +1,10 @@
-package shticell.expression.api.impl;
+package shticell.expression.impl;
 
 import shticell.expression.api.Expression;
 import shticell.cell.api.CellType;
 import shticell.cell.api.EffectiveValue;
 import shticell.cell.impl.EffectiveValueImpl;
+import shticell.sheet.api.Sheet;
 
 public class MinusExpression implements Expression {
 
@@ -16,9 +17,9 @@ public class MinusExpression implements Expression {
     }
 
     @Override
-    public EffectiveValue eval() {
-        EffectiveValue leftValue = left.eval();
-        EffectiveValue rightValue = right.eval();
+    public EffectiveValue eval(Sheet sheet) {
+        EffectiveValue leftValue = left.eval(sheet);
+        EffectiveValue rightValue = right.eval(sheet);
         // do some checking... error handling...
         //double result = (Double) leftValue.getValue() + (Double) rightValue.getValue();
         double result = leftValue.extractValueWithExpectation(Double.class) - rightValue.extractValueWithExpectation(Double.class);

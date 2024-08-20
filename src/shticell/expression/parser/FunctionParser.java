@@ -1,10 +1,9 @@
 package shticell.expression.parser;
 
+import shticell.coordinate.Coordinate;
+import shticell.coordinate.CoordinateFactory;
 import shticell.expression.api.Expression;
-import shticell.expression.api.impl.IdentityExpression;
-import shticell.expression.api.impl.MinusExpression;
-import shticell.expression.api.impl.PlusExpression;
-import shticell.expression.api.impl.UpperCaseExpression;
+import shticell.expression.impl.*;
 import shticell.cell.api.CellType;
 import shticell.cell.api.EffectiveValue;
 
@@ -58,8 +57,12 @@ public enum FunctionParser {
             Expression right = parseExpression(arguments.get(1).trim());
 
             // more validations on the expected argument types
-            if (!left.getFunctionResultType().equals(CellType.NUMERIC) || !right.getFunctionResultType().equals(CellType.NUMERIC)) {
-                throw new IllegalArgumentException("Invalid argument types for PLUS function. Expected NUMERIC, but got " + left.getFunctionResultType() + " and " + right.getFunctionResultType());
+            CellType leftCellType = left.getFunctionResultType();
+            CellType rightCellType = right.getFunctionResultType();
+            // support UNKNOWN type as its value will be determined at runtime
+            if ( (!leftCellType.equals(CellType.NUMERIC) && !leftCellType.equals(CellType.UNKNOWN)) ||
+                    (!rightCellType.equals(CellType.NUMERIC) && !rightCellType.equals(CellType.UNKNOWN)) ) {
+                throw new IllegalArgumentException("Invalid argument types for PLUS function. Expected NUMERIC, but got " + leftCellType + " and " + rightCellType);
             }
 
             // all is good. create the relevant function instance
@@ -105,6 +108,26 @@ public enum FunctionParser {
 
             // all is good. create the relevant function instance
             return new UpperCaseExpression(arg);
+        }
+    },
+    REF {
+        @Override
+        public Expression parse(List<String> arguments) {
+            // validations of the function. it should have exactly one argument
+            if (arguments.size() != 1) {
+                throw new IllegalArgumentException("Invalid number of arguments for REF function. Expected 1, but got " + arguments.size());
+            }
+
+            // verify indeed argument represents a reference to a cell and create a Coordinate instance. if not ok returns a null. need to verify it
+            Coordinate target = CoordinateFactory.from(arguments.get(0).trim());
+            if (target == null) {
+                throw new IllegalArgumentException("Invalid argument for REF function. Expected a valid cell reference, but got " + arguments.get(0));
+            }
+
+            // should verify if the coordinate is within boundaries of the sheet ?
+            // ...
+
+            return new RefExpression(target);
         }
     }
 
@@ -171,7 +194,7 @@ public enum FunctionParser {
 //        String input = "{upper_case, hello world}";
 //        String input = "4";
         Expression expression = parseExpression(input);
-        EffectiveValue result = expression.eval();
+        EffectiveValue result = expression.eval(null);
         System.out.println("result: " + result.getValue() + " of type " + result.getCellType());
     }
 

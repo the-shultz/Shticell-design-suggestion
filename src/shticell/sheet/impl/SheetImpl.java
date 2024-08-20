@@ -34,7 +34,7 @@ public class SheetImpl implements Sheet {
         Optional
             .ofNullable(activeCells.get(coordinate))
             .or(() -> {
-                    Cell newCell = new CellImpl(row, column, value, 1);
+                    Cell newCell = new CellImpl(row, column, value, 1, this);
                     activeCells.put(coordinate, newCell);
                     return Optional.of(newCell);
                 })
