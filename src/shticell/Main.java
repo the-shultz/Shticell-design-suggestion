@@ -7,14 +7,14 @@ import shticell.sheet.impl.SheetImpl;
 public class Main {
     public static void main(String[] args) {
         Sheet sheet = new SheetImpl();
-        sheet.setCell(0, 0, "Hello, World!");
+        sheet.updateCellValueAndCalculate(0, 0, "Hello, World!");
 
         Cell cell = sheet.getCell(0, 0);
         cell.calculateEffectiveValue();
         Object value = cell.getEffectiveValue().getValue();
         System.out.println(value);
 
-        sheet.setCell(1,1, "{plus, 1, 2}");
+        sheet.updateCellValueAndCalculate(1,1, "{plus, 1, 2}");
 
         cell = sheet.getCell(1, 1);
 
