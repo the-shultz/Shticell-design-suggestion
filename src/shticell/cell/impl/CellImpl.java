@@ -51,12 +51,19 @@ public class CellImpl implements Cell {
     }
 
     @Override
-    public void calculateEffectiveValue() {
+    public boolean calculateEffectiveValue() {
         // build the expression object out of the original value...
         // it can be {PLUS, 4, 5} OR {CONCAT, {ref, A4}, world}
         Expression expression = FunctionParser.parseExpression(originalValue);
 
-        effectiveValue = expression.eval(sheet);
+        EffectiveValue newEffectiveValue = expression.eval(sheet);
+
+        if (newEffectiveValue.equals(effectiveValue)) {
+            return false;
+        } else {
+            effectiveValue = newEffectiveValue;
+            return true;
+        }
     }
 
     @Override

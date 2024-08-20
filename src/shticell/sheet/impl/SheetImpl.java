@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class SheetImpl implements Sheet {
 
@@ -36,14 +37,21 @@ public class SheetImpl implements Sheet {
         Coordinate coordinate = CoordinateFactory.createCoordinate(row, column);
 
         SheetImpl newSheetVersion = copySheet();
-        Cell newCell = new CellImpl(row, column, value, newSheetVersion.getVersion(), newSheetVersion);
+        Cell newCell = new CellImpl(row, column, value, newSheetVersion.getVersion() + 1, newSheetVersion);
         newSheetVersion.activeCells.put(coordinate, newCell);
 
         try {
-            List<Cell> cellsCalculationOrder = newSheetVersion.orderCellsForCalculation();
-            cellsCalculationOrder.forEach(Cell::calculateEffectiveValue);
-            // successful calculation. update sheet version
-            // newSheetVersion.increaseVersion();
+            List<Cell> cellsThatHaveChanged =
+                newSheetVersion
+                    .orderCellsForCalculation()
+                    .stream()
+                    .filter(Cell::calculateEffectiveValue)
+                    .collect(Collectors.toList());
+
+            // successful calculation. update sheet and relevant cells version
+            // int newVersion = newSheetVersion.increaseVersion();
+            // cellsThatHaveChanged.forEach(cell -> cell.updateVersion(newVersion));
+
             return newSheetVersion;
         } catch (Exception e) {
             // deal with the runtime error that was discovered as part of invocation
