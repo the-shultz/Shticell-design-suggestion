@@ -5,6 +5,7 @@ import shticell.cell.api.CellType;
 import shticell.cell.api.EffectiveValue;
 import shticell.cell.impl.EffectiveValueImpl;
 import shticell.sheet.api.Sheet;
+import shticell.sheet.api.SheetReadActions;
 
 public class IdentityExpression implements Expression {
 
@@ -17,7 +18,7 @@ public class IdentityExpression implements Expression {
     }
 
     @Override
-    public EffectiveValue eval(Sheet sheet) {
+    public EffectiveValue eval(SheetReadActions sheet) {
         return new EffectiveValueImpl(type, value);
     }
 

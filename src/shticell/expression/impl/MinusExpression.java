@@ -5,6 +5,7 @@ import shticell.cell.api.CellType;
 import shticell.cell.api.EffectiveValue;
 import shticell.cell.impl.EffectiveValueImpl;
 import shticell.sheet.api.Sheet;
+import shticell.sheet.api.SheetReadActions;
 
 public class MinusExpression implements Expression {
 
@@ -17,7 +18,7 @@ public class MinusExpression implements Expression {
     }
 
     @Override
-    public EffectiveValue eval(Sheet sheet) {
+    public EffectiveValue eval(SheetReadActions sheet) {
         EffectiveValue leftValue = left.eval(sheet);
         EffectiveValue rightValue = right.eval(sheet);
         // do some checking... error handling...

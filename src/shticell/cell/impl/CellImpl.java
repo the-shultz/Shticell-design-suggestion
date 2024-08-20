@@ -7,6 +7,7 @@ import shticell.coordinate.CoordinateImpl;
 import shticell.expression.api.Expression;
 import shticell.expression.parser.FunctionParser;
 import shticell.sheet.api.Sheet;
+import shticell.sheet.api.SheetReadActions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,9 +20,9 @@ public class CellImpl implements Cell {
     private int version;
     private final List<Cell> dependsOn;
     private final List<Cell> influencingOn;
-    private final Sheet sheet;
+    private final SheetReadActions sheet;
 
-    public CellImpl(int row, int column, String originalValue, int version, Sheet sheet)  {
+    public CellImpl(int row, int column, String originalValue, int version, SheetReadActions sheet)  {
         this.sheet = sheet;
         this.coordinate = new CoordinateImpl(row, column);
         this.originalValue = originalValue;
