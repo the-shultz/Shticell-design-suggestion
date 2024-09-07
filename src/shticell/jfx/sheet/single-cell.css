@@ -1,7 +1,3 @@
-.single-cell.empty-cell {
-    -fx-background-color: none;
-}
-
 .single-cell {
     -fx-border-color: black;
     -fx-padding: 3px;

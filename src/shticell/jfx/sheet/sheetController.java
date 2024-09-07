@@ -37,6 +37,12 @@ public class sheetController {
     private CheckBox markCheckbox;
 
     @FXML
+    private ComboBox<String> selectCellForEditCombobox;
+
+    @FXML
+    private TextField cellInputContentTextfield;
+
+    @FXML
     private Spinner<Integer> heightPicker;
 
     @FXML
@@ -47,8 +53,40 @@ public class sheetController {
 
     private ObjectProperty<Label> selectedCell;
 
+    private UIModel uiModel;
+
     @FXML
     private void initialize() {
+
+        // update cell data through the ui model
+        uiModel = new UIModel(cellA1, cellA2, cellB1, cellB2);
+
+        ObservableList<String> cells =
+                FXCollections.observableArrayList(
+                        "A1", "B1", "A2", "b2"
+                );
+        selectCellForEditCombobox.setItems(cells);
+        selectCellForEditCombobox.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            cellInputContentTextfield.clear();
+        });
+
+        cellInputContentTextfield.textProperty().addListener((o, oldValue, newValue) -> {
+            switch (selectCellForEditCombobox.getSelectionModel().getSelectedIndex()) {
+                case 0:
+                    uiModel.cellA1Property().set(newValue);
+                    break;
+                case 1:
+                    uiModel.cellB1Property().set(newValue);
+                    break;
+                case 2:
+                    uiModel.cellA2Property().set(newValue);
+                    break;
+                case 3:
+                    uiModel.cellB2Property().set(newValue);
+                    break;
+            }
+        });
+
         ObservableList<String> options =
                 FXCollections.observableArrayList(
                         "Left",
@@ -143,6 +181,12 @@ public class sheetController {
             cellA1.getStyleClass().add("background-cell");
             cellA1.setStyle("-fx-text-fill: black;");
         }
+    }
+
+
+    @FXML
+    void inputCellActionListener(ActionEvent event) {
+        System.out.println("tf action field: " + cellInputContentTextfield.getText());
     }
 
     private void changeSecondColumnWidth(double width) {

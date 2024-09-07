@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -28,7 +29,7 @@
             <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
          </rowConstraints>
          <children>
-            <Label fx:id="cellA1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="hello" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="cellA1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <styleClass>
                   <String fx:value="single-cell" />
                   <String fx:value="background-cell" />
@@ -37,7 +38,7 @@
             <Label text="B" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" />
             <Label text="1" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="cellB2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="7" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label fx:id="cellB2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <styleClass>
                   <String fx:value="single-cell" />
                   <String fx:value="background-cell" />
@@ -45,13 +46,13 @@
             <Label fx:id="cellA2" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <styleClass>
                   <String fx:value="single-cell" />
-                  <String fx:value="empty-cell" />
+                  <String fx:value="background-cell" />
                </styleClass>
             </Label>
             <Label fx:id="cellB1" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <styleClass>
                   <String fx:value="single-cell" />
-                  <String fx:value="empty-cell" />
+                  <String fx:value="background-cell" />
                </styleClass>
             </Label>
          </children>
@@ -66,6 +67,8 @@
             <Spinner fx:id="heightPicker" prefWidth="70.0" />
             <CheckBox fx:id="toggleColorCheckbox" mnemonicParsing="false" onAction="#toggleCellColor" text="color &amp; fill" />
             <CheckBox fx:id="markCheckbox" mnemonicParsing="false" onAction="#markCellsButtonActionListener" text="mark" />
+            <ComboBox fx:id="selectCellForEditCombobox" prefWidth="80.0" />
+            <TextField fx:id="cellInputContentTextfield" onAction="#inputCellActionListener" prefWidth="80.0" />
          </children>
       </HBox>
    </children>
