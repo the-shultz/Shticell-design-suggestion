@@ -1,4 +1,4 @@
-package shticell.jfx;
+package shticell.jfx.main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Hello There in FXML");
 
-        Parent load = FXMLLoader.load(getClass().getResource("sheet/sheet.fxml"));
+        Parent load = FXMLLoader.load(getClass().getResource("main.fxml"));
         Scene scene = new Scene(load, 600, 400);
         primaryStage.setScene(scene);
         primaryStage.show();

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shticell.jfx.main.MainController">
+   <children>
+      <fx:include fx:id="sheetComponent" source="../sheet/sheet.fxml" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="142.0" layoutY="276.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0">
+         <children>
+            <ComboBox fx:id="alignmentBox" onAction="#alignmentSelectionListener" prefWidth="80.0" visibleRowCount="3" />
+            <Spinner fx:id="widthPicker" prefWidth="70.0" />
+            <Spinner fx:id="heightPicker" prefWidth="70.0" />
+            <CheckBox fx:id="toggleColorCheckbox" mnemonicParsing="false" text="color &amp; fill" />
+            <CheckBox fx:id="markCheckbox" mnemonicParsing="false" text="mark" />
+            <ComboBox fx:id="selectCellForEditCombobox" prefWidth="80.0" />
+            <TextField fx:id="cellInputContentTextfield" prefWidth="80.0" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
